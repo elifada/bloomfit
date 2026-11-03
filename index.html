@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BloomFit is a student-friendly PE planning demo that creates adaptable activity sessions.">
+  <title>BloomFit AI — Your Personal PE Coach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="BloomFit home"><span class="brand-mark">✿</span> bloomfit<span class="brand-ai">.ai</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#coach">Build a plan</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">A LITTLE MORE MOVEMENT, A LITTLE MORE YOU</p>
+        <h1>Your PE day,<br><span>your way.</span></h1>
+        <p class="hero-description">Create a flexible physical education session around your activity, available time and experience. Small steps count.</p>
+        <a class="primary-link" href="#coach">Create my plan <span aria-hidden="true">↗</span></a>
+        <p class="tiny-note">A student project exploring how AI-style personalization could support PE.</p>
+      </div>
+      <div class="hero-art" aria-label="Decorative illustration">
+        <div class="sun"></div>
+        <div class="flower flower-one">✿</div>
+        <div class="flower flower-two">✽</div>
+        <div class="leaf leaf-one"></div>
+        <div class="leaf leaf-two"></div>
+        <div class="art-card"><span>MOVE</span><strong>at your<br>own pace.</strong><small>Bloom where you are.</small></div>
+      </div>
+    </section>
+
+    <section class="section coach-section" id="coach">
+      <div class="section-heading">
+        <p class="eyebrow">LET'S MAKE A PLAN</p>
+        <h2>Meet your PE coach</h2>
+        <p>Tell us a little about the session you want. You can change your choices and generate a new plan anytime.</p>
+      </div>
+
+      <div class="planner">
+        <form id="plan-form">
+          <div class="form-grid">
+            <label>What's your main goal?
+              <select id="goal" name="goal">
+                <option value="general">General fitness</option>
+                <option value="endurance">Build endurance</option>
+                <option value="strength">Practice strength</option>
+                <option value="mobility">Mobility and flexibility</option>
+                <option value="skills">Practice sports skills</option>
+              </select>
+            </label>
+            <label>Which activity interests you?
+              <select id="activity" name="activity">
+                <option value="general">General PE</option>
+                <option value="running">Running / walking</option>
+                <option value="basketball">Basketball</option>
+                <option value="volleyball">Volleyball</option>
+                <option value="football">Football</option>
+              </select>
+            </label>
+            <label>How would you describe your experience?
+              <select id="level" name="level">
+                <option value="beginner">New to this</option>
+                <option value="intermediate">Some experience</option>
+                <option value="experienced">Lots of experience</option>
+              </select>
+            </label>
+            <label>How much time do you have?
+              <select id="duration" name="duration">
+                <option value="15">15 minutes</option>
+                <option value="20">20 minutes</option>
+                <option value="30" selected>30 minutes</option>
+                <option value="45">45 minutes</option>
+              </select>
+            </label>
+            <label>What equipment is available?
+              <select id="equipment" name="equipment">
+                <option value="none">No equipment</option>
+                <option value="ball">A ball</option>
+                <option value="band">Resistance band</option>
+                <option value="gym">PE / gym equipment</option>
+              </select>
+            </label>
+            <label>Where will you be active?
+              <select id="place" name="place">
+                <option value="indoors">Indoors</option>
+                <option value="outdoors">Outdoors</option>
+              </select>
+            </label>
+          </div>
+          <label class="notes-label">Anything your coach should consider? <span>(optional)</span>
+            <input id="notes" name="notes" type="text" maxlength="120" placeholder="e.g. I prefer low-impact activities">
+          </label>
+          <p class="privacy-note">Please don't enter private medical details. This demo does not assess injuries or health conditions.</p>
+          <button class="primary-button" type="submit">Create my PE plan <span aria-hidden="true">✿</span></button>
+        </form>
+
+        <section class="results" id="results" aria-live="polite" hidden>
+          <div class="results-top">
+            <div>
+              <p class="eyebrow">YOUR SESSION</p>
+              <h3 id="plan-title">A plan made for you</h3>
+              <p id="plan-summary" class="plan-summary"></p>
+            </div>
+            <span class="duration-pill" id="duration-pill">30 min</span>
+          </div>
+          <div id="plan-list" class="plan-list"></div>
+          <div class="coach-tip"><span>✿</span><p id="coach-tip"></p></div>
+          <div class="result-actions">
+            <button type="button" class="secondary-button" id="regenerate">Make another plan</button>
+            <button type="button" class="secondary-button" id="print-plan">Print / save plan</button>
+          </div>
+          <p class="disclaimer">This is a learning demonstration, not medical or professional coaching advice. Check activities with your PE teacher, use a safe space, and stop if something hurts or feels wrong.</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="section how-section" id="how-it-works">
+      <div class="section-heading">
+        <p class="eyebrow">SIMPLE BY DESIGN</p>
+        <h2>How BloomFit works</h2>
+        <p>The demo uses your selections to assemble a session. A future version could connect to an AI model to generate more flexible suggestions.</p>
+      </div>
+      <div class="steps">
+        <article class="step-card"><span class="step-number">01</span><div class="step-icon">☘</div><h3>Share your preferences</h3><p>Choose a goal, activity, time and available equipment.</p></article>
+        <article class="step-card"><span class="step-number">02</span><div class="step-icon">✿</div><h3>Build a session</h3><p>BloomFit creates a warm-up, activity block and cool-down.</p></article>
+        <article class="step-card"><span class="step-number">03</span><div class="step-icon">♡</div><h3>Review and adapt</h3><p>Check the plan with your PE teacher and adjust it to the lesson.</p></article>
+      </div>
+    </section>
+
+    <section class="about-band" id="about">
+      <div class="about-flower">✽</div>
+      <div><p class="eyebrow">THE PROJECT</p><h2>Can technology make PE more personal?</h2><p>BloomFit was created to explore personalization in physical education. It also highlights why human guidance, safety and individual needs matter.</p></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#home">✿ bloomfit<span class="brand-ai">.ai</span></a><p>Made for a PE class project · Move at your own pace.</p></footer>
+</body>
+</html>
